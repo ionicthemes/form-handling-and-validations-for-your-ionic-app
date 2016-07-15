@@ -1,0 +1,16 @@
+/* Empty. Add your own CSS if you like */
+.help-block{
+  color: red;
+}
+
+.has_error{
+  border-color: red;
+}
+
+.form_group{
+  margin-bottom: 20px;
+}
+
+.sex_selected{
+  
+}

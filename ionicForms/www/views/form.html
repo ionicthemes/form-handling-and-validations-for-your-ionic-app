@@ -1,0 +1,46 @@
+<ion-view class="home-view">
+   <ion-content>
+     <form name="user_form" class="" novalidate>
+          <div class="form-fields-outer list list-inset">
+            <div class="form_group" >
+              <label class="item item-input" ng-class="{ 'has_error' : user_form.name.$invalid && !user_form.name.$pristine }">
+                <input type="text" placeholder="Name" name="name" ng-model="user.name" class="form_control" required>
+              </label>
+              <p ng-show="user_form.name.$invalid && !user_form.name.$pristine" class="help-block">Your name is required.</p>
+            </div>
+            <div class="form_group" >
+              <label class="item item-input" ng-class="{ 'has_error' : user_form.surname.$invalid && !user_form.surname.$pristine }">
+                <input type="text" placeholder="Surname" name="surname" ng-model="user.surname" class="form_control" required>
+              </label>
+              <p ng-show="user_form.surname.$invalid && !user_form.surname.$pristine" class="help-block">Your surname is required.</p>
+            </div>
+            <div class="form_group" >
+              <label class="item item-input" ng-class="{ 'has_error' : user_form.email.$invalid && !user_form.email.$pristine }">
+                <input type="email" placeholder="Email" name="email" ng-model="user.email" class="form_control" required>
+              </label>
+              <p ng-show="!user_form.email.$pristine && user_form.email.$invalid" class="help-block">Enter a valid email.</p>
+            </div>
+            <label class="item item-input">
+              <input type="tel" placeholder="Phone Number" name="phone" required>
+            </label>
+            <label class="item item-input" show-hide-container>
+              <input type="password" placeholder="Password" name="password" required show-hide-input>
+            </label>
+            <label class="item item-input" show-hide-container>
+              <input type="password" placeholder="Repeat Password" name="repeat password" required show-hide-input>
+            </label>
+            <div class="form_group" >
+              <label class="item item-input" ng-class="{ 'has_error' : user_form.sex.$invalid && !user_form.sex.$pristine }">
+                <span class="selected-sex">Sex: {{ user_form.sex }}</span>
+                <select ng-model="user_form.sex" class="sex_selected">
+    		            <option value="Male" selected>Male</option>
+    		            <option value="Female">Female</option>
+    		        </select>
+              </label>
+              <p ng-show="user_form.sex.$invalid && !user_form.sex.$pristine" class="help-block">Your sex is required.</p>
+            </div>
+
+          </div>
+        </form>
+   </ion-content>
+</ion-view>
