@@ -45,15 +45,16 @@
               <p ng-show="user_form.password.$error.pattern && !user_form.password.$error.minlength" class="help-block">Your password must contain one lower and uppercase letter, and one non-alpha character.</p>
             </div>
             <div class="form_group" >
-              <label class="item item-input" >
+              <label class="item item-input" ng-class="{ 'has_error' : user_form.confirm_password.$invalid && !user_form.confirm_password.$pristine }">
                 <input type="password" placeholder="Confirm Password" name="confirm_password" ng-model="user.confirm_password" required>
               </label>
-              <p ng-show="false" class="help-block">Your password does not match.</p>
+              <p ng-show="user_form.confirm_password.$invalid && !user_form.confirm_password.$pristine" class="help-block">You must confirm your password.</p>
+              <p ng-show="{{match_password}}" class="help-block">Your password does not match.</p>
             </div>
             <div class="form_group" >
               <label class="item item-input item-select">
                 <div class="input-label">
-                <spam class="selected_sex">Sex:</spam> {{user.sex}}
+                <spam class="selected_values">Sex:</spam> {{user.sex}}
                 </div>
                 <select ng-model="user.sex" class="sex_selected">
     		            <option value="Male" selected>Male</option>
@@ -62,11 +63,14 @@
               </label>
             </div>
             <div class="form_group" >
-              <label class="item item-input" >
-                <input type="date" placeholder="Date" name="date" ng-model="user.date" required>
+              <label class="item item-input">
+                <span class="input-label selected_values">Date:</span>
+                <input type="date" name="date" ng-moder="user.date" required>
               </label>
-              <p ng-show="false" class="help-block">Your password does not match.</p>
             </div>
+            <button class="button button-full button-positive" ng-click="submit(user)" ng-disabled="user_form.$invalid">
+              Submit
+            </button>
           </div>
         </form>
    </ion-content>
