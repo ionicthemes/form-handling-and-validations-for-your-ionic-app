@@ -4,7 +4,7 @@
           <div class="form-fields-outer list list-inset">
             <div class="form_group" >
               <label class="item item-input" ng-class="{ 'has_error' : user_form.username.$invalid && !user_form.username.$pristine }">
-                <input type="text" placeholder="Username" name="username" ng-model="user.username" class="form_control" ng-minlength="5" ng-maxlength="25" required ng-pattern="/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/" valid-username="user.username">
+                <input type="text" placeholder="Username" name="username" ng-model="user.username" class="form_control" ng-minlength="5" ng-maxlength="25" ng-pattern="/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/" valid-username="user.username"  required>
               </label>
               <p ng-show="user_form.username.$invalid && !user_form.username.$pristine && !user_form.username.$error.minlength && !user_form.username.$error.maxlength && !user_form.username.$error.pattern && !user_form.username.$error.validusername" class="help-block">Your username is required.</p>
               <p ng-show="user_form.username.$error.minlength" class="help-block">Your username is too short.</p>
@@ -45,11 +45,11 @@
               <p ng-show="user_form.password.$error.pattern && !user_form.password.$error.minlength" class="help-block">Your password must contain one lower and uppercase letter, and one non-alpha character.</p>
             </div>
             <div class="form_group" >
-              <label class="item item-input" ng-class="{ 'has_error' : user_form.confirm_password.$invalid && !user_form.confirm_password.$pristine }">
+              <label class="item item-input" ng-class="{ 'has_error' : (user_form.confirm_password.$invalid && !user_form.confirm_password.$pristine) || match_password }">
                 <input type="password" placeholder="Confirm Password" name="confirm_password" ng-model="user.confirm_password" required>
               </label>
               <p ng-show="user_form.confirm_password.$invalid && !user_form.confirm_password.$pristine" class="help-block">You must confirm your password.</p>
-              <p ng-show="{{match_password}}" class="help-block">Your password does not match.</p>
+              <p ng-show="match_password" class="help-block">Your password does not match.</p>
             </div>
             <div class="form_group" >
               <label class="item item-input item-select">

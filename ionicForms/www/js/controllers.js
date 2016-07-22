@@ -9,11 +9,6 @@ angular.module('controllers', [])
     email: '',
     password: '',
     confirm_password: ''};
-  $scope.match_password = "false";
-
-  $scope.areEquals = function(pass, confirm_pass){
-    return pass!=confirm_pass;
-  }
 
   $scope.submit = function(user){
     var pass = user.password,
