@@ -3,6 +3,7 @@ angular.module('controllers', [])
 .controller('FormCtrl', function($scope, $state) {
   $scope.user ={
     sex: 'Male',
+    phone_1: '+1',
     username: '',
     name: '',
     surname: '',

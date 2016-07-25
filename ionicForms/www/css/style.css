@@ -14,3 +14,8 @@
 .selected_values{
   color: rgb(170,170,170);
 }
+
+.phone_2{
+  width:20%;
+  border: 1px solid gray;;
+}
