@@ -30,18 +30,20 @@
               </label>
               <p ng-show="!user_form.email.$pristine && user_form.email.$invalid" class="help-block">Enter a valid email.</p>
             </div>
-            <div class="form_group">
+            <div class="form_group row">
               <label class="item item-input item-select">
-                <div class="input-label">
+                <div class="input-label col">
                   <spam class="selected_values">Phone:</spam> {{user.phone_1}}
                 </div>
-                <div class="phone_2">
+                <div class="phone_2 col" >
                   <input type="number" ng-model="user.phone_2" placeholder="Phone" required >
                 </div>
-                <select ng-model="user.phone_1" required>
-                  <option value="+589">Uruguay</option>
-                  <option value="+1" selected>USA</option>
-                </select>
+                <div class="col">
+                  <select ng-model="user.phone_1" required>
+                    <option value="+589">Uruguay</option>
+                    <option value="+1" selected>USA</option>
+                  </select>
+                </div>
               </label>
             </div>
             <div class="form_group" >
