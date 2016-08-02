@@ -59,7 +59,7 @@
                 <input type="password" placeholder="Confirm Password" name="confirm_password" ng-model="user.confirm_password" required>
               </label>
               <p ng-show="user_form.confirm_password.$invalid && !user_form.confirm_password.$pristine" class="help-block">You must confirm your password.</p>
-              <p ng-show="match_password" class="help-block">Your password does not match.</p>
+              <p ng-show="not_match_password" class="help-block">Your password does not match.</p>
             </div>
             <div class="form_group" >
               <label class="item item-input item-select">
@@ -77,6 +77,10 @@
                 <span class="input-label selected_values">Date:</span>
                 <input type="date" name="date" ng-moder="user.date" required>
               </label>
+            </div>
+            <div class="form_group">
+                <ion-checkbox ng-model="user.accept" >I have read and agree to the Terms and Conditions</ion-checkbox>
+                <p ng-show="not_accept_terms" class="help-block">Your must accept Terms and Conditions.</p>
             </div>
             <button class="button button-full button-positive" ng-click="submit(user)" ng-disabled="user_form.$invalid">
               Submit

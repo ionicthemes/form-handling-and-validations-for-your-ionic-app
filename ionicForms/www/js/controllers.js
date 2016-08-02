@@ -15,10 +15,16 @@ angular.module('controllers', [])
     var pass = user.password,
         confirm_pass = user.confirm_password;
     if(pass != confirm_pass){
-      $scope.match_password = "true";
+      $scope.not_match_password = "true";
     }
     else{
-      $scope.match_password = "false";
+      $scope.not_match_password = "";
+    }
+    if(user.accept){
+      $scope.not_accept_terms = "";
+    }
+    else{
+      $scope.not_accept_terms = "true";
     }
   }
 })
