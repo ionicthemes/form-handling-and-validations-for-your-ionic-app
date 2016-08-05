@@ -2,6 +2,11 @@
   "name": "ionicforms",
   "version": "1.1.1",
   "description": "ionicForms: An Ionic project",
+  "scripts": {
+    "postinstall": "bower install",
+    "prestart": "gulp",
+    "start": "node server.js"
+  },
   "dependencies": {
     "google-libphonenumber": "^1.0.25",
     "gulp": "^3.5.6",
