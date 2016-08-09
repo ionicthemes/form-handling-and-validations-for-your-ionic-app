@@ -1,8 +1,19 @@
 angular.module('controllers', [])
 
 .controller('FormCtrl', function($scope, $state) {
+  $scope.countries = [{
+    iso: 'USA',
+    name: 'United States',
+    code: '+1'
+  }, {
+    iso: 'UY',
+    name: 'Uruguay',
+    code: '+598'
+  }];
+
   $scope.user ={
     sex: 'Male',
+    country: {iso: 'USA', code: '+1'},
     phone_1: '+1',
     username: '',
     name: '',

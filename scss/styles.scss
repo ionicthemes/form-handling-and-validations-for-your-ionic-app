@@ -1,0 +1,50 @@
+/* Empty. Add your own CSS if you like */
+.help-block{
+  color: red;
+}
+
+.has_error{
+  border-color: red;
+}
+
+.form_group{
+  margin-bottom: 20px;
+}
+
+.selected_values{
+  color: rgb(170,170,170);
+  padding-right: 16px;
+}
+
+.phone_2{
+  border: 1px solid gray;;
+}
+
+
+.col.country-col
+{
+  padding-right: 5px;
+}
+.country-col .item-select select
+{
+  max-width: 100%;
+  position: relative;
+  padding-left: 0px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  height:36px;
+  direction: initial;
+  text-align: left !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.col.phone-col
+{
+  padding-left: 5px;
+}
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
+  height:36px;
+}
