@@ -12,9 +12,9 @@ angular.module('controllers', [])
   }];
 
   $scope.user ={
-    sex: 'Male',
+    gender: 'Male',
     country: {iso: 'USA', code: '+1'},
-    phone_1: '+1',
+    phone: '',
     username: '',
     name: '',
     surname: '',
