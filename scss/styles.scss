@@ -1,11 +1,13 @@
+$error-color: rgba(red, .6);
+
 .help-block
 {
-  color: red;
+  color: $error-color;
 }
 
 .has_error
 {
-  border-color: red;
+  border-color: $error-color;
 }
 
 .form_group
@@ -15,7 +17,9 @@
 
 .selected_values
 {
-  color: rgb(170,170,170);
+  // color: rgb(170,170,170);
+  color: #aaa;
+  font-size: 14px;
   padding-right: 16px;
 }
 
