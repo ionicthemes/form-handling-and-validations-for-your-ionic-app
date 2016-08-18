@@ -1,6 +1,12 @@
 angular.module('controllers', [])
 
-.controller('FormCtrl', function($scope, $state) {
+.controller('FormCtrl', function($scope, $state, i18n) {
+  var pepe = i18n.phonenumbers.PhoneNumberUtil.getInstance();
+
+  console.log(pepe.parse('202-456-1414', 'US'););
+
+  debugger;
+
   $scope.countries = [{
     iso: 'USA',
     name: 'United States',
