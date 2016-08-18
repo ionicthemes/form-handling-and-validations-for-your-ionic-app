@@ -43,6 +43,11 @@ angular.module('starter', [
     controller: 'FormCtrl'
   })
 
+  .state('user', {
+    url: '/user',
+    templateUrl: "views/user.html",
+  })
+
   $urlRouterProvider.otherwise('/form');
 })
 

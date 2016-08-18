@@ -41,10 +41,23 @@
             <select ng-options="item as item.name for item in countries track by item.code" ng-model="user.country"></select>
           </label>
         </div>
-        <div class="form_group">
-          <label class="item item-input">
+        <div class="form_group" >
+          <label class="item item-input" ng-class="{ 'has_error' : (sample_form.phone.$invalid && !sample_form.phone.$pristine) || phoneError }">
             <spam class="placeholder-values">{{user.country.code}}</spam>
-            <input type="number" ng-model="user.phone" placeholder="Phone" required>
+            <input type="text" ng-model="user.phone" name="phone" placeholder="Phone" class="form_control" required>
+          </label>
+          <p ng-show="sample_form.phone.$invalid && !sample_form.phone.$pristine" class="help-block">Your phone is required.</p>
+          <p ng-show="phoneError" class="help-block">{{phoneErrorMessage}}</p>
+        </div>
+        <div class="form_group">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              <spam class="placeholder-values">Gender</spam>
+            </div>
+            <select ng-model="user.gender" required>
+              <option value="Male" selected>Male</option>
+              <option value="Female">Female</option>
+            </select>
           </label>
         </div>
         <div class="form_group">
@@ -62,23 +75,7 @@
           <p ng-show="sample_form.confirm_password.$invalid && !sample_form.confirm_password.$pristine" class="help-block">You must confirm your password.</p>
           <p ng-show="not_match_password" class="help-block">Your password does not match.</p>
         </div>
-        <div class="form_group">
-          <label class="item item-input item-select">
-            <div class="input-label">
-              <spam class="placeholder-values">Gender</spam>
-            </div>
-            <select ng-model="user.gender" required>
-	            <option value="Male" selected>Male</option>
-	            <option value="Female">Female</option>
-		        </select>
-          </label>
-        </div>
-        <div class="form_group">
-          <label class="item item-input">
-            <span class="input-label placeholder-values">Date</span>
-            <input class="date-input" type="date" name="date" ng-moder="user.date" required>
-          </label>
-        </div>
+
         <div class="form_group">
           <ion-checkbox ng-model="user.accept" class="terms-checkbox">
             <span class="terms-checkbox-label">I have read and agree to the Terms and Conditions</span>
