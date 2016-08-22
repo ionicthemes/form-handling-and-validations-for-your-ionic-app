@@ -48,23 +48,28 @@ angular.module('directives', [])
   };
 })
 
-//
-// .directive('confirmPassword',function(){
-//   return{
-//     require: 'ngModel',
-//     link: function(scope, ele, attrs, c){
-//       scope.$watch(attrs.ngModel, function(username_value){
-//         if(username_value=="abc123" || username_value=="123abc")
-//         {
-//          c.$setValidity('validusername', false);
-//         }
-//         else
-//         {
-//          c.$setValidity('validusername', true);
-//         }
-//       });
-//     }
-//   };
-// })
+.directive('confirmPassword',function(){
+  return{
+    require: 'ngModel',
+    scope: {
+			password: '=confirmPassword'
+		},
+    link: function(scope, elm, attrs, ctrl){
+      ctrl.$validators.confirmPassword = function(modelValue, viewValue) {
+        if (ctrl.$isEmpty(modelValue)) {
+          // consider empty models to be valid
+          return true;
+        }
+
+        return (modelValue === scope.password);
+      };
+
+      // If the user changes the password, then we have to re-validate the confirm password input
+      scope.$watch('password', function() {
+        if(scope.password) ctrl.$validate();
+      });
+    }
+  };
+})
 
 ;
