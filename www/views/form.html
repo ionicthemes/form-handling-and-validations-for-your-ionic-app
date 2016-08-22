@@ -1,0 +1,99 @@
+<ion-view class="home-view">
+  <ion-header-bar class="bar-stable">
+    <h1 class="title">Ionic Forms Example</h1>
+  </ion-header-bar>
+  <ion-content>
+    <form name="sample_form" novalidate>
+      <div class="form-fields-outer list list-inset">
+        <!-- Username -->
+        <div class="form_group">
+          <label class="item item-input" ng-class="{ 'has_error' : sample_form.username.$invalid && !sample_form.username.$pristine }">
+            <input type="text" placeholder="Username" name="username" ng-model="user.username" ng-model-options="{ debounce: 500 }" class="form_control" ng-minlength="5" ng-maxlength="25" ng-pattern="/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/" valid-username="user.username" required>
+          </label>
+          <p ng-show="sample_form.username.$invalid && !sample_form.username.$pristine && !sample_form.username.$error.minlength && !sample_form.username.$error.maxlength && !sample_form.username.$error.pattern && !sample_form.username.$error.validusername" class="help-block">Your username is required.</p>
+          <p ng-show="sample_form.username.$error.minlength" class="help-block">Your username is too short.</p>
+          <p ng-show="sample_form.username.$error.maxlength && !sample_form.username.$error.pattern" class="help-block">Your username is too long.</p>
+          <p ng-show="sample_form.username.$error.pattern && !sample_form.username.$error.minlength" class="help-block">Your username must contain numbers and letters.</p>
+          <p ng-show="sample_form.username.$error.validusername" class="help-block">Your username has already been taken.</p>
+        </div>
+        <!-- Name -->
+        <div class="form_group">
+          <label class="item item-input" ng-class="{ 'has_error' : sample_form.name.$invalid && !sample_form.name.$pristine }">
+            <input type="text" placeholder="Name" name="name" ng-model="user.name" class="form_control" required>
+          </label>
+          <p ng-show="sample_form.name.$invalid && !sample_form.name.$pristine" class="help-block">Your name is required.</p>
+        </div>
+        <!-- Surname -->
+        <div class="form_group">
+          <label class="item item-input" ng-class="{ 'has_error' : sample_form.surname.$invalid && !sample_form.surname.$pristine }">
+            <input type="text" placeholder="Surname" name="surname" ng-model="user.surname" class="form_control" required>
+          </label>
+          <p ng-show="sample_form.surname.$invalid && !sample_form.surname.$pristine" class="help-block">Your surname is required.</p>
+        </div>
+        <!-- Email -->
+        <div class="form_group">
+          <label class="item item-input" ng-class="{ 'has_error' : sample_form.email.$invalid && !sample_form.email.$pristine }">
+            <input type="email" placeholder="Email" name="email" ng-model="user.email" class="form_control" required>
+          </label>
+          <p ng-show="!sample_form.email.$pristine && sample_form.email.$invalid" class="help-block">Enter a valid email.</p>
+        </div>
+        <!-- Phone (+ country) -->
+        <div class="form_group">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              <spam class="placeholder-values">Country</span>
+            </div>
+            <select ng-options="item as item.name for item in countries track by item.code" ng-model="user.phone.country"></select>
+          </label>
+        </div>
+        <div class="form_group" >
+          <label class="item item-input" ng-class="{ 'has_error' : (sample_form.phone.$invalid && !sample_form.phone.$pristine) || phoneError }">
+            <spam class="placeholder-values">{{user.phone.country.code}}</spam>
+            <input type="text" ng-model="user.phone.number" name="phone" placeholder="Phone" class="form_control" valid-phone country="user.phone.country" required>
+          </label>
+          <p ng-show="sample_form.phone.$invalid && !sample_form.phone.$pristine && !sample_form.phone.$error.validPhone" class="help-block">Your phone is required.</p>
+          <p ng-show="sample_form.phone.$error.validPhone" class="help-block">Enter a valid phone.</p>
+        </div>
+        <!-- Gender -->
+        <div class="form_group">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              <spam class="placeholder-values">Gender</spam>
+            </div>
+            <select ng-model="user.gender" required>
+              <option value="Male" selected>Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </label>
+        </div>
+        <!-- Password (+ confirm password) -->
+        <div class="form_group">
+          <label class="item item-input" ng-class="{ 'has_error' : sample_form.password.$invalid && !sample_form.password.$pristine }">
+            <input type="password" placeholder="Password" name="password" ng-model="user.password" ng-minlength="5" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required>
+          </label>
+          <p ng-show="!sample_form.password.$pristine && sample_form.password.$invalid && !sample_form.password.$error.minlength && !sample_form.password.$error.pattern" class="help-block">Your password is required.</p>
+          <p ng-show="sample_form.password.$error.minlength" class="help-block">Your password is too short.</p>
+          <p ng-show="sample_form.password.$error.pattern && !sample_form.password.$error.minlength" class="help-block">Your password must contain one lower and uppercase letter, and one non-alpha character.</p>
+        </div>
+        <div class="form_group">
+          <label class="item item-input" ng-class="{ 'has_error' : (sample_form.confirm_password.$invalid && !sample_form.confirm_password.$pristine) || match_password }">
+            <input type="password" placeholder="Confirm Password" name="confirm_password" ng-model="user.confirm_password" ng-model-options="{ updateOn: 'blur' }" confirm-password="user.password" required>
+          </label>
+          <p ng-show="sample_form.confirm_password.$invalid && !sample_form.confirm_password.$pristine && !sample_form.confirm_password.$error.confirmPassword" class="help-block">You must confirm your password.</p>
+          <p ng-show="sample_form.confirm_password.$error.confirmPassword" class="help-block">Your password does not match.</p>
+        </div>
+        <!-- Terms & Conditions -->
+        <div class="form_group">
+          <ion-checkbox ng-model="user.accept_terms" name="terms" class="terms-checkbox">
+            <span class="terms-checkbox-label">I have read and agree to the Terms and Conditions</span>
+          </ion-checkbox>
+          <p ng-show="!sample_form.terms.$pristine && !user.accept_terms" class="help-block">Your must accept Terms and Conditions.</p>
+        </div>
+        <!-- Finally, submit! -->
+        <button class="button button-full button-positive" ng-click="submit(user)" ng-disabled="sample_form.$invalid">
+          Submit
+        </button>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

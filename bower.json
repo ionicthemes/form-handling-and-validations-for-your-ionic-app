@@ -1,0 +1,10 @@
+{
+  "name": "ionic_forms",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.3.1"
+  },
+  "dependencies": {
+    "google-libphonenumber": "https://github.com/ionicthemes/google-libphonenumber.git"
+  }
+}
