@@ -7,12 +7,12 @@
       <div class="form-fields-outer list list-inset">
         <div class="form_group">
           <label class="item item-input" ng-class="{ 'has_error' : sample_form.username.$invalid && !sample_form.username.$pristine }">
-            <input type="text" placeholder="Username" name="username" ng-model="user.username" class="form_control" ng-minlength="5" ng-maxlength="25" ng-pattern="/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/" valid-username="user.username" required>
+            <input type="text" placeholder="Username" name="username" ng-model="user.username" ng-model-options="{ debounce: 500 }" class="form_control" ng-minlength="5" ng-maxlength="25" ng-pattern="/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/" valid-username="user.username" required>
           </label>
           <p ng-show="sample_form.username.$invalid && !sample_form.username.$pristine && !sample_form.username.$error.minlength && !sample_form.username.$error.maxlength && !sample_form.username.$error.pattern && !sample_form.username.$error.validusername" class="help-block">Your username is required.</p>
           <p ng-show="sample_form.username.$error.minlength" class="help-block">Your username is too short.</p>
           <p ng-show="sample_form.username.$error.maxlength && !sample_form.username.$error.pattern" class="help-block">Your username is too long.</p>
-          <p ng-show="sample_form.username.$error.pattern && !sample_form.username.$error.minlength" class="help-block">Your username must contain a number and a letter.</p>
+          <p ng-show="sample_form.username.$error.pattern && !sample_form.username.$error.minlength" class="help-block">Your username must contain numbers and letters.</p>
           <p ng-show="sample_form.username.$error.validusername" class="help-block">Your username has already been taken.</p>
         </div>
         <div class="form_group">
@@ -38,13 +38,13 @@
             <div class="input-label">
               <spam class="placeholder-values">Country</span>
             </div>
-            <select ng-options="item as item.name for item in countries track by item.code" ng-model="user.country"></select>
+            <select ng-options="item as item.name for item in countries track by item.code" ng-model="user.phone.country"></select>
           </label>
         </div>
         <div class="form_group" >
           <label class="item item-input" ng-class="{ 'has_error' : (sample_form.phone.$invalid && !sample_form.phone.$pristine) || phoneError }">
-            <spam class="placeholder-values">{{user.country.code}}</spam>
-            <input type="text" ng-model="user.phone" name="phone" placeholder="Phone" class="form_control" required>
+            <spam class="placeholder-values">{{user.phone.country.code}}</spam>
+            <input type="text" ng-model="user.phone.number" name="phone" placeholder="Phone" class="form_control" required>
           </label>
           <p ng-show="sample_form.phone.$invalid && !sample_form.phone.$pristine" class="help-block">Your phone is required.</p>
           <p ng-show="phoneError" class="help-block">{{phoneErrorMessage}}</p>

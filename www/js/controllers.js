@@ -14,22 +14,29 @@ angular.module('controllers', [])
     code: '+598'
   }];
 
-  $scope.user ={
+  $scope.user = {
     gender: 'Male',
-    country: {iso: 'US', code: '+1'},
-    phone: '',
+    phone: {
+      country: {
+        iso: 'US',
+        name: 'United States',
+        code: '+1'
+      },
+      number: ''
+    },
     username: '',
     name: '',
     surname: '',
     email: '',
     password: '',
-    confirm_password: ''};
+    confirm_password: ''
+  };
 
   $scope.submit = function(user){
     var pass = user.password,
         confirm_pass = user.confirm_password,
-        phoneNumber = user.phone,
-        region = user.country.iso;
+        phoneNumber = user.phone.number,
+        region = user.phone.country.iso;
     if(pass != confirm_pass){
       $scope.not_match_password = "true";
     }

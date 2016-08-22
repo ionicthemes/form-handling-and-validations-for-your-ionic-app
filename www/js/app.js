@@ -1,8 +1,9 @@
 // Ionic Starter App
 
+// Angular binding for google libphonenumber library
 angular.module('i18n', [])
 .factory('i18n', function() {
-  return i18n; // assumes underscore has already been loaded on the page
+  return i18n; // assumes google libphonenumber has already been loaded on the page
 });
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -12,7 +13,6 @@ angular.module('starter', [
   'ionic',
   'controllers',
   'directives',
-  'services',
   'i18n'
 ])
 
