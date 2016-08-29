@@ -13,7 +13,8 @@ angular.module('starter', [
   'ionic',
   'controllers',
   'directives',
-  'i18n'
+  'i18n',
+  'ngMessages'
 ])
 
 .run(function($ionicPlatform) {

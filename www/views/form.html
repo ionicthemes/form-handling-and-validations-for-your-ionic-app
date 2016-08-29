@@ -21,7 +21,9 @@
           <label class="item item-input" ng-class="{ 'has_error' : sample_form.name.$invalid && !sample_form.name.$pristine }">
             <input type="text" placeholder="Name" name="name" ng-model="user.name" class="form_control" required>
           </label>
-          <p ng-show="sample_form.name.$invalid && !sample_form.name.$pristine" class="help-block">Your name is required.</p>
+          <div ng-show="!sample_form.name.$pristine" ng-messages="sample_form.name.$error">
+            <p ng-message="required" class="help-block">Your name is required.</p>
+          </div>
         </div>
         <!-- Surname -->
         <div class="form_group">
