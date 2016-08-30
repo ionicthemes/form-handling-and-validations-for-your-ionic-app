@@ -1,6 +1,8 @@
 angular.module('controllers', [])
 
 .controller('FormCtrl', function($scope, $state, i18n) {
+  $scope.checkTerms = false;
+
   $scope.countries = [{
     iso: 'US',
     name: 'United States',
@@ -32,8 +34,12 @@ angular.module('controllers', [])
 
   $scope.submit = function(user){
     // You can also check stuff before submitting
-    if(user.accept_terms){
+    if(user.accept_terms ){
+      $scope.checkTerms = false;
       $state.go("user");
+    }
+    else{
+      $scope.checkTerms = true;
     }
   }
 })
