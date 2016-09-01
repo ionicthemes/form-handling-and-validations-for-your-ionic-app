@@ -49,12 +49,13 @@
           </label>
         </div>
         <div class="form_group" >
-          <label class="item item-input" ng-class="{ 'has_error' : (sample_form.phone.$invalid && !sample_form.phone.$pristine) || phoneError }">
+          <label class="item item-input" ng-class="{ 'has_error' : (sample_form.phone.$invalid && !sample_form.phone.$pristine)}">
             <spam class="placeholder-values">{{user.phone.country.code}}</spam>
-            <input type="text" ng-model="user.phone.number" name="phone" placeholder="Phone" class="form_control" valid-phone country="user.phone.country" required>
+            <input type="tel" ng-model="user.phone.number" name="phone" placeholder="Phone" class="form_control" ng-pattern="/^[0-9]+$/" valid-phone country="user.phone.country" required>
           </label>
-          <p ng-show="sample_form.phone.$invalid && !sample_form.phone.$pristine && !sample_form.phone.$error.validPhone" class="help-block">Your phone is required.</p>
-          <p ng-show="sample_form.phone.$error.validPhone" class="help-block">Enter a valid phone.</p>
+          <p ng-show="sample_form.phone.$invalid && !sample_form.phone.$pristine && !sample_form.phone.$error.validPhone && !sample_form.phone.$error.pattern" class="help-block">Your phone is required.</p>
+          <p ng-show="sample_form.phone.$error.validPhone && !sample_form.phone.$error.pattern" class="help-block">Enter a valid phone.</p>
+          <p ng-show="sample_form.phone.$error.pattern" class="help-block">Enter only numbers.</p>
         </div>
         <!-- Gender -->
         <div class="form_group">
@@ -79,7 +80,7 @@
         </div>
         <div class="form_group">
           <label class="item item-input" ng-class="{ 'has_error' : (sample_form.confirm_password.$invalid && !sample_form.confirm_password.$pristine) || match_password }">
-            <input type="password" placeholder="Confirm Password" name="confirm_password" ng-model="user.confirm_password" ng-model-options="{ updateOn: 'blur' }" confirm-password="user.password" required>
+            <input type="password" placeholder="Confirm Password" name="confirm_password" ng-model-options="{ debounce: 500 }" ng-model="user.confirm_password" confirm-password="user.password" required>
           </label>
           <p ng-show="sample_form.confirm_password.$invalid && !sample_form.confirm_password.$pristine && !sample_form.confirm_password.$error.confirmPassword" class="help-block">You must confirm your password.</p>
           <p ng-show="sample_form.confirm_password.$error.confirmPassword" class="help-block">Your password does not match.</p>
@@ -89,7 +90,8 @@
           <ion-checkbox ng-model="user.accept_terms" name="terms" class="terms-checkbox">
             <span class="terms-checkbox-label">I have read and agree to the Terms and Conditions</span>
           </ion-checkbox>
-          <p ng-show="!sample_form.terms.$pristine && !user.accept_terms" class="help-block">Your must accept Terms and Conditions.</p>
+          <p ng-show="!sample_form.terms.$pristine && !user.accept_terms && !checkTerms" class="help-block">Your must accept Terms and Conditions.</p>
+          <p ng-show="checkTerms && !user.accept_terms" class="help-block">Your must accept Terms and Conditions.</p>
         </div>
         <!-- Finally, submit! -->
         <button class="button button-full button-positive" ng-click="submit(user)" ng-disabled="sample_form.$invalid">
