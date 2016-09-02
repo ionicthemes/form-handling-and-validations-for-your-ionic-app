@@ -31,16 +31,16 @@ angular.module('directives', [])
           return true;
         }
 
-            try{
-              var phoneNumber = "" + modelValue + "",
-                  region = scope.country.iso,
-                  phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance(),
-                  number = phoneUtil.parse(phoneNumber, region),
-                  isValidNumber = phoneUtil.isValidNumber(number);
-            }catch(e){
-            console.log(e);
-            return false;
-            }
+        try{
+          var phoneNumber = "" + modelValue + "",
+              region = scope.country.iso,
+              phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance(),
+              number = phoneUtil.parse(phoneNumber, region),
+              isValidNumber = phoneUtil.isValidNumber(number);
+        }catch(e){
+          console.log(e);
+          return false;
+        }
 
         return isValidNumber;
       };
