@@ -55,7 +55,7 @@
           </label>
           <p ng-show="sample_form.phone.$invalid && !sample_form.phone.$pristine && !sample_form.phone.$error.validPhone && !sample_form.phone.$error.pattern" class="help-block">Your phone is required.</p>
           <p ng-show="sample_form.phone.$error.validPhone && !sample_form.phone.$error.pattern" class="help-block">Enter a valid phone.</p>
-          <p ng-show="sample_form.phone.$error.pattern" class="help-block">Enter only numbers.</p>
+          <p ng-show="sample_form.phone.$error.pattern" class="help-block">Only numbers are allowed.</p>
         </div>
         <!-- Gender -->
         <div class="form_group">
@@ -87,11 +87,10 @@
         </div>
         <!-- Terms & Conditions -->
         <div class="form_group">
-          <ion-checkbox ng-model="user.accept_terms" name="terms" class="terms-checkbox">
+          <ion-checkbox ng-model="user.accept_terms" name="terms" class="terms-checkbox" ng-required="!user.accept_terms">
             <span class="terms-checkbox-label">I have read and agree to the Terms and Conditions</span>
           </ion-checkbox>
-          <p ng-show="!sample_form.terms.$pristine && !user.accept_terms && !checkTerms" class="help-block">Your must accept Terms and Conditions.</p>
-          <p ng-show="checkTerms && !user.accept_terms" class="help-block">Your must accept Terms and Conditions.</p>
+          <p ng-show="!sample_form.accept_terms.$pristine && sample_form.accept_terms.$invalid" class="help-block">Your must accept Terms and Conditions.</p>
         </div>
         <!-- Finally, submit! -->
         <button class="button button-full button-positive" ng-click="submit(user)" ng-disabled="sample_form.$invalid">
