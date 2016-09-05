@@ -48,7 +48,7 @@
             <select ng-options="item as item.name for item in countries track by item.code" ng-model="user.phone.country"></select>
           </label>
         </div>
-        <div class="form_group" >
+        <div class="form_group">
           <label class="item item-input" ng-class="{ 'has_error' : (sample_form.phone.$invalid && !sample_form.phone.$pristine)}">
             <spam class="placeholder-values">{{user.phone.country.code}}</spam>
             <input type="tel" ng-model="user.phone.number" name="phone" placeholder="Phone" class="form_control" ng-pattern="/^[0-9]+$/" valid-phone country="user.phone.country" required>
